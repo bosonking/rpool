@@ -19,6 +19,15 @@ export default {
       },
     },
     extend: {
+      minHeight: {
+        120: "30rem",
+      },
+      height: {
+        120: "30rem",
+      },
+      maxHeight: {
+        120: "30rem",
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

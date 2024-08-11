@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/table";
 import { UserAgent } from "@/domain/dashboard/types";
 import { formatDifficulty, formatHashRate } from "@/utils";
-import { TableUICard } from "../ui/TableUICard ";
+import { DataCard } from "../ui/DataCard ";
 
 type Props = {
   onlineDevices?: UserAgent[];
@@ -21,7 +21,7 @@ export const OnlineDevicesCard: React.FC<Props> = ({
   loading,
 }) => {
   return (
-    <TableUICard icon="Activity" title="Online Devices" loading={loading}>
+    <DataCard icon="Activity" title="Online Devices" loading={loading}>
       <Table>
         <TableHeader>
           <TableRow>
@@ -38,12 +38,12 @@ export const OnlineDevicesCard: React.FC<Props> = ({
             <TableBody>
               {onlineDevices.map((onlineDevice, i) => (
                 <TableRow key={onlineDevice.userAgent + i}>
-                  <TableCell>#{i + 1}</TableCell>
+                  <TableCell>{onlineDevice.userAgent}</TableCell>
                   <TableCell>{onlineDevice.count}</TableCell>
-                  <TableCell>
+                  <TableCell className="text-right">
                     {formatHashRate(onlineDevice.totalHashRate)}
                   </TableCell>
-                  <TableCell>
+                  <TableCell className="text-right">
                     {formatDifficulty(onlineDevice.bestDifficulty)}
                   </TableCell>
                 </TableRow>
@@ -52,6 +52,6 @@ export const OnlineDevicesCard: React.FC<Props> = ({
           </>
         )}
       </Table>
-    </TableUICard>
+    </DataCard>
   );
 };

@@ -6,13 +6,50 @@ export default (): MockHandler[] => [
     handle: (_, res) => {
       res.end(
         JSON.stringify({
-          blockData: [],
+          blockData: [
+            {
+              height: 1,
+              address: "bc1qar0srrr7xfkvy5l643lydnw9re59gtzzwf5mdq",
+              worker: "bitaxe",
+              session: "546812",
+            },
+          ],
           userAgents: [
             {
               userAgent: "bitaxe",
               count: 1,
               bestDifficulty: 1100623.1619364428,
               totalHashRate: 386346357233.64484,
+            },
+            {
+              userAgent: "nerdminer",
+              count: 1,
+              bestDifficulty: 100623.1619364428,
+              totalHashRate: 57233.64484,
+            },
+            {
+              userAgent: "bitaxe",
+              count: 1,
+              bestDifficulty: 1100623.1619364428,
+              totalHashRate: 386346357233.64484,
+            },
+            {
+              userAgent: "nerdminer",
+              count: 1,
+              bestDifficulty: 100623.1619364428,
+              totalHashRate: 57233.64484,
+            },
+            {
+              userAgent: "bitaxe",
+              count: 1,
+              bestDifficulty: 1100623.1619364428,
+              totalHashRate: 386346357233.64484,
+            },
+            {
+              userAgent: "nerdminer",
+              count: 1,
+              bestDifficulty: 100623.1619364428,
+              totalHashRate: 57233.64484,
             },
             {
               userAgent: "nerdminer",

@@ -7,7 +7,7 @@ import {
   TableHeader,
   TableRow,
 } from "../../ui/table";
-import { TableUICard } from "../ui/TableUICard ";
+import { DataCard } from "../ui/DataCard ";
 import { formatDifficulty, formatRelativeTime } from "@/utils";
 
 type Props = {
@@ -17,7 +17,7 @@ type Props = {
 
 export const HighScoresCard = ({ highScores = [], loading }: Props) => {
   return (
-    <TableUICard title="High Scores" icon="CreditCard" loading={loading}>
+    <DataCard title="High Scores" icon="CreditCard" loading={loading}>
       <Table>
         <TableHeader>
           <TableRow>
@@ -40,6 +40,6 @@ export const HighScoresCard = ({ highScores = [], loading }: Props) => {
           ))}
         </TableBody>
       </Table>
-    </TableUICard>
+    </DataCard>
   );
 };

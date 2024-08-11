@@ -1,19 +1,22 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Icon, IconName } from "@/components/ui/icon";
 import { Skeleton } from "@/components/ui/skeleton";
+import { cn } from "@/lib/utils";
 import { PropsWithChildren } from "react";
 
 type Props = {
   icon: IconName;
   loading?: boolean;
   title: string;
+  highlight?: boolean;
 };
 
-export const TableUICard: React.FC<PropsWithChildren<Props>> = ({
+export const DataCard: React.FC<PropsWithChildren<Props>> = ({
   children,
   icon,
   loading,
   title,
+  highlight = false,
 }) => {
   if (loading) {
     return (
@@ -23,12 +26,25 @@ export const TableUICard: React.FC<PropsWithChildren<Props>> = ({
     );
   }
   return (
-    <Card>
+    <Card className="min-h-[inherit]">
       <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-        <CardTitle className="text-sm font-medium">{title}</CardTitle>
-        <Icon name={icon} className="h-4 w-4 text-muted-foreground" />
+        <CardTitle
+          className={cn("font-medium", {
+            "text-2xl": highlight,
+            "text-sm": !highlight,
+          })}
+        >
+          {title}
+        </CardTitle>
+        <Icon
+          name={icon}
+          className={cn("text-muted-foreground", {
+            "h-8 w-8": highlight,
+            "h4- w-4": !highlight,
+          })}
+        />
       </CardHeader>
-      <CardContent className="flex flex-col justify-center max-h-96">
+      <CardContent className="flex flex-col justify-center max-h-96 pb-0">
         {children}
       </CardContent>
     </Card>

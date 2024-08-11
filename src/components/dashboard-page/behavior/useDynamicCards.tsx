@@ -1,20 +1,44 @@
-import { InfoData } from "@/domain/dashboard/types";
+import { HashRateChartData, InfoData } from "@/domain/dashboard/types";
 import { useEffect, useState } from "react";
 
 const API_URL = import.meta.env.PUBLIC_API_URL;
 
+type RawChartData = {
+  label: string;
+  data: number;
+};
+
 export const useDynamicCards = () => {
   const [infoData, setInfoData] = useState<InfoData | null>(null);
+  const [hashRateChartData, setHashRateChartData] = useState<
+    HashRateChartData[]
+  >([]);
   const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
+  const fetchData = async () => {
     setLoading(true);
-    fetch(`${API_URL}/api/info`)
-      .then((response) => response.json())
-      .then((data) => setInfoData(data))
+    Promise.all([
+      fetch(`${API_URL}/api/info`)
+        .then((response) => response.json())
+        .then((data) => setInfoData(data)),
+      fetch(`${API_URL}/api/info/chart`)
+        .then((response) => response.json())
+        .then((data: RawChartData[]) =>
+          setHashRateChartData(
+            data.map(({ label, data }) => ({
+              dateTime: label,
+              hashRate: data,
+            }))
+          )
+        ),
+    ])
       .catch((error) => console.error(error))
       .finally(() => setLoading(false));
+  };
+
+  useEffect(() => {
+    fetchData();
   }, []);
 
-  return { infoData, loading };
+  return { infoData, hashRateChartData, refetch: fetchData, loading };
 };
