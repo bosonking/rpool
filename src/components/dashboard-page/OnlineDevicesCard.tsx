@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/table";
 import { UserAgent } from "@/domain/dashboard";
 import { formatDifficulty, formatHashRate } from "@/lib/formatters";
-import { DataCard } from "../../common/DataCard";
+import { DataCard } from "../common/DataCard";
 
 type Props = {
   onlineDevices?: UserAgent[];
@@ -21,7 +21,12 @@ export const OnlineDevicesCard: React.FC<Props> = ({
   loading,
 }) => {
   return (
-    <DataCard icon="Activity" title="Online Devices" loading={loading}>
+    <DataCard
+      icon="Activity"
+      title="Online Devices"
+      loading={loading}
+      highlight
+    >
       <Table>
         <TableHeader>
           <TableRow>

@@ -1,13 +1,66 @@
-import { BreadcrumbNav } from "@/components/common/BreadcrumbNav";
-import { DynamicCards } from "@/components/dashboard-page/behavior/DynamicCards";
-import { StaticCards } from "@/components/dashboard-page/behavior/StaticCards";
+import { ChartCard } from "@/components/common/ChartCard";
+import { Navigation } from "@/components/common/Navigation";
+import { ConnectCard } from "@/components/dashboard-page/ConnectCard";
+import { DonateCard } from "@/components/dashboard-page/DonateCard";
+import { FoundBlocksCard } from "@/components/dashboard-page/FoundBlocksCard";
+import { HighScoresCard } from "@/components/dashboard-page/HighScoresCard";
+import { OnlineDevicesCard } from "@/components/dashboard-page/OnlineDevicesCard";
+import { SearchCard } from "@/components/dashboard-page/SearchCard";
+import { useDashboardPage } from "@/hooks/useDashboardPage";
 
 export function DashboardPage() {
+  const { infoData, hashRateChartData, refetch, loading } = useDashboardPage();
   return (
     <>
-      <BreadcrumbNav />
-      <StaticCards />
-      <DynamicCards />
+      <Navigation onClickRefresh={refetch} />
+      <div className="grid gap-2 md:gap-4 lg:grid-cols-3">
+        <ConnectCard />
+        <SearchCard />
+        <DonateCard />
+      </div>
+      {infoData?.blockData && infoData?.blockData.length > 0 ? (
+        <>
+          <ChartCard data={hashRateChartData} loading={loading} />
+          <div className="grid gap-2 md:gap-4 lg:grid-cols-3">
+            <div className="min-h-120 max-h-120">
+              <HighScoresCard
+                highScores={infoData?.highScores}
+                loading={loading}
+              />
+            </div>
+            <div className="min-h-120 max-h-120">
+              <FoundBlocksCard
+                foundBlocks={infoData?.blockData}
+                loading={loading}
+              />
+            </div>
+            <div className="min-h-120 max-h-120">
+              <OnlineDevicesCard
+                onlineDevices={infoData?.userAgents}
+                loading={loading}
+              />
+            </div>
+          </div>
+        </>
+      ) : (
+        <div className="grid gap-2 md:gap-4 lg:grid-cols-4">
+          <div className="lg:col-start-1 min-h-120 max-h-120">
+            <HighScoresCard
+              highScores={infoData?.highScores}
+              loading={loading}
+            />
+          </div>
+          <div className="lg:col-start-2 lg:col-span-2 min-h-120 max-h-120">
+            <ChartCard data={hashRateChartData} loading={loading} />
+          </div>
+          <div className="lg:col-start-4 min-h-120 max-h-120">
+            <OnlineDevicesCard
+              onlineDevices={infoData?.userAgents}
+              loading={loading}
+            />
+          </div>
+        </div>
+      )}
     </>
   );
 }

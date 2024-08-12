@@ -9,7 +9,7 @@ type RawChartData = {
   data: number;
 };
 
-export const useDynamicCards = () => {
+export const useDashboardPage = () => {
   const [infoData, setInfoData] = useState<PoolData | null>(null);
   const [hashRateChartData, setHashRateChartData] = useState<
     HashRateChartData[]

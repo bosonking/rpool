@@ -2,7 +2,7 @@ import onChainPublicPoolAddress from "@/assets/onchain_public_pool.svg";
 import offChainPublicPoolAddress from "@/assets/offchain_public_pool.svg";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { HandCoins } from "lucide-react";
-import { QrChart } from "../ui/QrChart";
+import { QrChart } from "./QrChart";
 
 export const DonateCard = () => {
   return (
