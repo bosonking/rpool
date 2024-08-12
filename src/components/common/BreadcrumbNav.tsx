@@ -9,9 +9,10 @@ import {
 type Props = {
   address?: string;
   worker?: string;
+  sessionId?: string;
 };
 
-export const BreadcrumbNav = ({ address, worker }: Props) => {
+export const BreadcrumbNav = ({ address, worker, sessionId }: Props) => {
   return (
     <Breadcrumb className="px-2">
       <BreadcrumbList>
@@ -29,9 +30,13 @@ export const BreadcrumbNav = ({ address, worker }: Props) => {
         {worker && (
           <>
             <BreadcrumbSeparator />
-            <BreadcrumbItem>
-              <BreadcrumbLink href={`/${worker}`}>{worker}</BreadcrumbLink>
-            </BreadcrumbItem>
+            <BreadcrumbItem>{worker}</BreadcrumbItem>
+          </>
+        )}
+        {sessionId && (
+          <>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>{sessionId}</BreadcrumbItem>
           </>
         )}
       </BreadcrumbList>

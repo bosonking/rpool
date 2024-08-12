@@ -1,12 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { Toaster } from "./components/ui/toaster.tsx";
 import { ThemeProvider } from "./contexts/theme/theme-provider.tsx";
 import "./index.css";
 import { MainLayout } from "./layout/MainLayout.tsx";
+import { AddressPage } from "./pages/AddressPage.tsx";
 import { DashboardPage } from "./pages/DashboardPage.tsx";
 import { WorkerPage } from "./pages/WorkerPage.tsx";
-import { Toaster } from "./components/ui/toaster.tsx";
 
 const router = createBrowserRouter([
   {
@@ -19,7 +20,17 @@ const router = createBrowserRouter([
       },
       {
         path: ":address",
-        element: <WorkerPage />,
+
+        children: [
+          {
+            index: true,
+            element: <AddressPage />,
+          },
+          {
+            path: ":worker/:sessionId",
+            element: <WorkerPage />,
+          },
+        ],
       },
     ],
   },

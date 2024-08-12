@@ -1,14 +1,13 @@
-export type Worker = {
+import { HashRateChartData } from "./chart";
+
+export type WorkerData = {
   bestDifficulty: number;
-  hashRate: number;
-  lastSeen: string;
+  chartData: HashRateChartData[];
   name: string;
   sessionId: string;
   startTime: string;
 };
 
-export type WorkerData = {
-  bestDifficulty: number;
-  workers: Worker[];
-  workersCount: number;
+export type WorkerDataDTO = Omit<WorkerData, "chartData"> & {
+  chartData: { label: string; data: number }[];
 };

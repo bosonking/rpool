@@ -1,4 +1,4 @@
-import { Worker } from "@/domain/worker";
+import { AddressWorker } from "@/domain/address";
 import { DataCard } from "../common/DataCard";
 import {
   Table,
@@ -13,13 +13,21 @@ import {
   formatHashRate,
   formatRelativeTime,
 } from "@/lib/formatters";
+import { useNavigate } from "react-router-dom";
 
 type Props = {
-  workers: Worker[];
+  address?: string;
+  workers: AddressWorker[];
   loading?: boolean;
 };
 
-export const WorkersCard = ({ workers, loading: loading }: Props) => {
+export const WorkersCard = ({ address, workers, loading: loading }: Props) => {
+  const navigate = useNavigate();
+  const navigateToWorker = (worker: AddressWorker) => {
+    navigate(`/${address}/${worker.name}/${worker.sessionId}`);
+  };
+  if (!address) return null;
+
   return (
     <DataCard icon="Server" title="Workers" highlight loading={loading}>
       <Table>
@@ -35,7 +43,11 @@ export const WorkersCard = ({ workers, loading: loading }: Props) => {
         </TableHeader>
         <TableBody>
           {workers.map((worker) => (
-            <TableRow key={worker.sessionId}>
+            <TableRow
+              className="cursor-pointer"
+              key={worker.sessionId}
+              onClick={() => navigateToWorker(worker)}
+            >
               <TableCell>{worker.name}</TableCell>
               <TableCell>{worker.sessionId}</TableCell>
               <TableCell>{formatHashRate(worker.hashRate)}</TableCell>
