@@ -26,7 +26,7 @@ export const DataCard: React.FC<PropsWithChildren<Props>> = ({
     );
   }
   return (
-    <Card className="min-h-[inherit]">
+    <Card className="flex flex-col w-full h-full">
       <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
         <CardTitle
           className={cn("font-medium", {
@@ -44,7 +44,7 @@ export const DataCard: React.FC<PropsWithChildren<Props>> = ({
           })}
         />
       </CardHeader>
-      <CardContent className="flex flex-col justify-center max-h-96 pb-0">
+      <CardContent className="grow h-36 flex flex-col justify-start pb-0">
         {children}
       </CardContent>
     </Card>

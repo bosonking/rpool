@@ -61,3 +61,7 @@ export function formatRelativeTime(value?: string | number): string {
   }
   return "";
 }
+
+export function formatNumber(value: number): string {
+  return value.toLocaleString();
+}

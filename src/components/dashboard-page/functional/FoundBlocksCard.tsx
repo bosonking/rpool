@@ -8,7 +8,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { BlockData } from "@/domain/dashboard";
-import { DataCard } from "../ui/DataCard";
+import { DataCard } from "../../common/DataCard";
 
 type Props = {
   foundBlocks?: BlockData[];

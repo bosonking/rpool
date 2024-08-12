@@ -7,7 +7,7 @@ import {
 import { HashRateChartData } from "@/domain/chart";
 import { formatHashRate } from "@/lib/formatters";
 import { CartesianGrid, Legend, Line, LineChart, XAxis, YAxis } from "recharts";
-import { DataCard } from "../ui/DataCard";
+import { DataCard } from "./DataCard";
 import { movingAvg } from "@/lib/moving-avg";
 import { useEffect, useState } from "react";
 
@@ -47,7 +47,7 @@ export const ChartCard = ({
     if (showMovingAverage) {
       chartConfig.sma = {
         label: `SMA${movingAveragePeriod}`,
-        color: "hsl(var(--chart-1))",
+        color: "hsl(var(--chart-5))",
       };
 
       const sma = movingAvg(
@@ -68,8 +68,12 @@ export const ChartCard = ({
       icon="ChartLine"
       title="Hash Rate in last 24 hours"
       loading={loading}
+      highlight={true}
     >
-      <ChartContainer config={chartConfig} className="min-h-80 w-full">
+      <ChartContainer
+        config={chartConfig}
+        className="min-h-80 w-full aspect-square"
+      >
         <LineChart accessibilityLayer data={chartData}>
           <CartesianGrid />
           <XAxis
@@ -101,7 +105,7 @@ export const ChartCard = ({
                 connectNulls
                 dataKey="sma"
                 type="natural"
-                stroke="hsl(var(--chart-1))"
+                stroke="hsl(var(--chart-5))"
                 strokeWidth={2}
                 dot={false}
               />

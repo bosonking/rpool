@@ -1,4 +1,4 @@
-import { ChartCard } from "../functional/ChartCard";
+import { ChartCard } from "../../common/ChartCard";
 import { FoundBlocksCard } from "../functional/FoundBlocksCard";
 import { HighScoresCard } from "../functional/HighScoresCard";
 import { InfoCard } from "../functional/InfoCard";

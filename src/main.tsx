@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { ThemeProvider } from "./contexts/theme/theme-provider.tsx";
 import "./index.css";
-import { MainLayoutNoNav } from "./layout/MainLayoutNoNav.tsx";
+import { MainLayout } from "./layout/MainLayout.tsx";
 import { DashboardPage } from "./pages/DashboardPage.tsx";
 import { WorkerPage } from "./pages/WorkerPage.tsx";
 import { Toaster } from "./components/ui/toaster.tsx";
@@ -11,7 +11,7 @@ import { Toaster } from "./components/ui/toaster.tsx";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <MainLayoutNoNav />,
+    element: <MainLayout />,
     children: [
       {
         index: true,

@@ -36,6 +36,7 @@ export const useWorkerPage = () => {
   }, [fetchData]);
 
   return {
+    address,
     workerData,
     networkData,
     hashRateChartData,

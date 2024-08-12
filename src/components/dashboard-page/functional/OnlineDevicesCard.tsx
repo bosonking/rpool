@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/table";
 import { UserAgent } from "@/domain/dashboard";
 import { formatDifficulty, formatHashRate } from "@/lib/formatters";
-import { DataCard } from "../ui/DataCard";
+import { DataCard } from "../../common/DataCard";
 
 type Props = {
   onlineDevices?: UserAgent[];

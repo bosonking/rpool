@@ -1,4 +1,4 @@
-type Worker = {
+export type Worker = {
   bestDifficulty: number;
   hashRate: number;
   lastSeen: string;
