@@ -1,14 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { ThemeProvider } from "./contexts/theme/theme-provider.tsx";
 import "./index.css";
-import { MainLayout } from "./layout/MainLayout.tsx";
+import { MainLayoutNoNav } from "./layout/MainLayoutNoNav.tsx";
 import { DashboardPage } from "./pages/DashboardPage.tsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <MainLayout />,
+    element: <MainLayoutNoNav />,
     children: [
       {
         index: true,
@@ -20,6 +21,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <ThemeProvider defaultTheme="dark" storageKey="rpool-ui_theme">
+      <RouterProvider router={router} />
+    </ThemeProvider>
   </React.StrictMode>
 );
