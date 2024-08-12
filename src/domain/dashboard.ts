@@ -18,14 +18,9 @@ export type BlockData = {
   session: string;
 };
 
-export type InfoData = {
+export type PoolData = {
   highScores: HighScore[];
   userAgents: UserAgent[];
   blockData: BlockData[];
   uptime: string;
-};
-
-export type HashRateChartData = {
-  dateTime: string;
-  hashRate: number;
 };

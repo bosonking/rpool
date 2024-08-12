@@ -12,13 +12,13 @@ export const ConnectCard = () => {
         <Pickaxe className="h-8 w-8 text-muted-foreground" />
       </CardHeader>
       <CardContent className="flex flex-col gap-2">
-        <p className="text-lg text-zinc-300">
+        <div className="text-lg text-zinc-300">
           Host:{" "}
           <span className="text-zinc-500">
             stratum-tcp://{STRATUM_HOST}:{STRATUM_PORT}
           </span>
-        </p>
-        <p className="text-lg text-zinc-300">
+        </div>
+        <div className="text-lg text-zinc-300">
           Username:{" "}
           <span className="text-zinc-500">
             &lt;your bitcoin address&gt;.&lt;device name&gt;
@@ -29,13 +29,13 @@ export const ConnectCard = () => {
               bc1qar0sxrr7xfkvy5l643lydnw9re59gazzwf5mdd.bitaxe
             </span>
           </div>
-        </p>
-        <p className="text-lg text-zinc-300">
+        </div>
+        <div className="text-lg text-zinc-300">
           Password: <span className="text-zinc-500">x</span>
           <div className="text-xs text-zinc-500">
             The password is not relevant
           </div>
-        </p>
+        </div>
       </CardContent>
     </Card>
   );

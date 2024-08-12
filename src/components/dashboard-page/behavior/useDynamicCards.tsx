@@ -1,4 +1,5 @@
-import { HashRateChartData, InfoData } from "@/domain/dashboard/types";
+import { HashRateChartData } from "@/domain/chart";
+import { PoolData } from "@/domain/dashboard";
 import { useEffect, useState } from "react";
 
 const API_URL = import.meta.env.PUBLIC_API_URL;
@@ -9,7 +10,7 @@ type RawChartData = {
 };
 
 export const useDynamicCards = () => {
-  const [infoData, setInfoData] = useState<InfoData | null>(null);
+  const [infoData, setInfoData] = useState<PoolData | null>(null);
   const [hashRateChartData, setHashRateChartData] = useState<
     HashRateChartData[]
   >([]);

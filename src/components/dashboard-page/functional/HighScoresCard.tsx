@@ -1,4 +1,5 @@
-import { HighScore } from "@/domain/dashboard/types";
+import { HighScore } from "@/domain/dashboard";
+import { formatDifficulty, formatRelativeTime } from "@/lib/formatters";
 import {
   Table,
   TableBody,
@@ -7,8 +8,7 @@ import {
   TableHeader,
   TableRow,
 } from "../../ui/table";
-import { DataCard } from "../ui/DataCard ";
-import { formatDifficulty, formatRelativeTime } from "@/utils";
+import { DataCard } from "../ui/DataCard";
 
 type Props = {
   highScores?: HighScore[];

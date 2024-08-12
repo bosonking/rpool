@@ -5,6 +5,8 @@ import { ThemeProvider } from "./contexts/theme/theme-provider.tsx";
 import "./index.css";
 import { MainLayoutNoNav } from "./layout/MainLayoutNoNav.tsx";
 import { DashboardPage } from "./pages/DashboardPage.tsx";
+import { WorkerPage } from "./pages/WorkerPage.tsx";
+import { Toaster } from "./components/ui/toaster.tsx";
 
 const router = createBrowserRouter([
   {
@@ -15,6 +17,10 @@ const router = createBrowserRouter([
         index: true,
         element: <DashboardPage />,
       },
+      {
+        path: ":address",
+        element: <WorkerPage />,
+      },
     ],
   },
 ]);
@@ -23,6 +29,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <ThemeProvider defaultTheme="dark" storageKey="rpool-ui_theme">
       <RouterProvider router={router} />
+      <Toaster />
     </ThemeProvider>
   </React.StrictMode>
 );

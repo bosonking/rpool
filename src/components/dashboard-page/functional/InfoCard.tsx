@@ -1,5 +1,5 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { formatRelativeTime } from "@/utils";
+import { formatRelativeTime } from "@/lib/formatters";
 import { RefreshCcw } from "lucide-react";
 
 type Props = {
