@@ -29,14 +29,14 @@ nano .env
 # Install, build and serve the project
 npm install
 npm run build
-pm2 serve --spa dist/index.html 8080 --name rpool-ui
+pm2 serve --spa --name rpool-ui ./dist 8123
 ```
 
 ## Docker
 
 ```bash
-$ docker build -t rpool-ui .
-$ docker run --name rpool-ui --rm -p 8080:80 rpool-ui
+docker build -t rpool-ui .
+docker run --name rpool-ui --rm -p 8123:80 rpool-ui
 ```
 
-From Docker commands, website will be accessible on [http://localhost:8080](http://localhost:8080). By default Caddy server listen on port 80, but we bind it to port 8080 which allows you to launch image without root permissions.
+From Docker commands, website will be accessible on [http://localhost:8123](http://localhost:8123). By default Caddy server listen on port 80, but we bind it to port 8123 which allows you to launch image without root permissions.
