@@ -15,9 +15,9 @@ export const BlockCard = withLoading(({ height, wheight, title }: Props) => {
         <CardTitle>{title}</CardTitle>
       </CardHeader>
       <CardContent className="flex flex-col gap-2">
-        <div className="text-3xl text-zinc-300">
+        <div className="text-3xl text-foreground">
           {height}
-          <div className="text-sm text-zinc-500">
+          <div className="text-sm text-muted-foreground">
             Weight: {formatNumber(wheight)} bytes
           </div>
         </div>

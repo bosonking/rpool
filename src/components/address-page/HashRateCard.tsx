@@ -14,7 +14,7 @@ export const HashRateCard = withLoading(({ hashRate, title }: Props) => {
         <CardTitle>{title}</CardTitle>
       </CardHeader>
       <CardContent className="flex flex-col gap-2">
-        <div className="text-3xl text-zinc-300">
+        <div className="text-3xl text-foreground">
           {formatHashRate(hashRate ?? 0)}
         </div>
       </CardContent>

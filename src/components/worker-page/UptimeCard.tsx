@@ -13,9 +13,9 @@ export const UptimeCard = withLoading(({ startTime }: Props) => {
         <CardTitle>Uptime</CardTitle>
       </CardHeader>
       <CardContent className="flex flex-col gap-2">
-        <div className="text-3xl text-zinc-300">
+        <div className="text-3xl text-foreground">
           {formatRelativeTime(startTime)}
-          <div className="text-sm text-zinc-500">
+          <div className="text-sm text-muted-foreground">
             Since {new Date(startTime).toLocaleString()}
           </div>
         </div>

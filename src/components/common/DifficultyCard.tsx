@@ -14,9 +14,9 @@ export const DifficultyCard = withLoading(({ difficulty, title }: Props) => {
         <CardTitle>{title}</CardTitle>
       </CardHeader>
       <CardContent className="flex flex-col gap-2">
-        <div className="text-3xl text-zinc-300">
+        <div className="text-3xl text-foreground">
           {formatDifficulty(difficulty ?? 0)}
-          <div className="text-xs text-zinc-500">
+          <div className="text-xs text-muted-foreground">
             {formatNumber(difficulty ?? 0)}
           </div>
         </div>

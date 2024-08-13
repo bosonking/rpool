@@ -12,9 +12,9 @@ export const IdCard = ({ name, sessionId }: Props) => {
         <CardTitle>Id</CardTitle>
       </CardHeader>
       <CardContent className="flex flex-col gap-2">
-        <div className="text-3xl text-zinc-300">
+        <div className="text-3xl text-foreground">
           {name}
-          <div className="text-sm text-zinc-500">{sessionId}</div>
+          <div className="text-sm text-muted-foreground">{sessionId}</div>
         </div>
       </CardContent>
     </Card>
