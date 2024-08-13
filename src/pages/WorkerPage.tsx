@@ -6,7 +6,8 @@ import { UptimeCard } from "@/components/worker-page/UptimeCard";
 import { useWorkerPage } from "@/hooks/useWorkerPage";
 
 export function WorkerPage() {
-  const { address, worker, sessionId, workerData, refetch } = useWorkerPage();
+  const { address, worker, sessionId, workerData, refetch, loading } =
+    useWorkerPage();
   return (
     <>
       <Navigation
@@ -16,19 +17,20 @@ export function WorkerPage() {
         onClickRefresh={refetch}
       />
       <div className="flex flex-col w-full h-full gap-4">
-        <div className="grid gap-2 md:gap-4 md:grid-cols-4">
-          <IdCard
-            name={workerData?.name ?? ""}
-            sessionId={workerData?.sessionId ?? ""}
-          />
+        <div className="grid gap-2 md:gap-4 md:grid-cols-3">
+          <IdCard name={worker ?? ""} sessionId={sessionId ?? ""} />
           <DifficultyCard
             difficulty={workerData?.bestDifficulty ?? 0}
             title="Your best difficulty"
+            loading={loading}
           />
-          <UptimeCard startTime={workerData?.startTime ?? ""} />
+          <UptimeCard
+            startTime={workerData?.startTime ?? ""}
+            loading={loading}
+          />
         </div>
 
-        <ChartCard data={workerData?.chartData ?? []} />
+        <ChartCard data={workerData?.chartData ?? []} loading={loading} />
       </div>
     </>
   );

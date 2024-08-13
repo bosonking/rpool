@@ -43,17 +43,17 @@ export function DashboardPage() {
           </div>
         </>
       ) : (
-        <div className="grid gap-2 md:gap-4 lg:grid-cols-4">
-          <div className="lg:col-start-1 min-h-120 max-h-120">
+        <div className="h-full grid gap-2 md:gap-4 lg:grid-cols-4">
+          <div className="lg:col-start-1">
             <HighScoresCard
               highScores={infoData?.highScores}
               loading={loading}
             />
           </div>
-          <div className="lg:col-start-2 lg:col-span-2 min-h-120 max-h-120">
+          <div className="lg:col-start-2 lg:col-span-2">
             <ChartCard data={hashRateChartData} loading={loading} />
           </div>
-          <div className="lg:col-start-4 min-h-120 max-h-120">
+          <div className="lg:col-start-4">
             <OnlineDevicesCard
               onlineDevices={infoData?.userAgents}
               loading={loading}

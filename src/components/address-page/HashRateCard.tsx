@@ -1,12 +1,13 @@
 import { formatHashRate } from "@/lib/formatters";
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
+import { withLoading, WithLoadingProps } from "@/hocs/WithLoading";
 
-type Props = {
+type Props = WithLoadingProps & {
   hashRate: number;
   title: string;
 };
 
-export function HashRateCard({ hashRate, title }: Props) {
+export const HashRateCard = withLoading(({ hashRate, title }: Props) => {
   return (
     <Card>
       <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
@@ -19,4 +20,4 @@ export function HashRateCard({ hashRate, title }: Props) {
       </CardContent>
     </Card>
   );
-}
+});

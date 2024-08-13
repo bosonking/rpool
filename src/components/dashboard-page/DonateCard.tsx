@@ -12,7 +12,7 @@ export const DonateCard = () => {
         <HandCoins className="h-8 w-8 text-muted-foreground" />
       </CardHeader>
       <CardContent className="flex flex-col gap-2">
-        <p className="text-md text-zinc-300 leading-8">
+        <p className="text-md text-muted-foreground leading-8">
           This project is open-source and free to use. It is based on{" "}
           <a
             href="https://github.com/benjamin-wilson/public-pool-ui"

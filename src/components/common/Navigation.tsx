@@ -7,6 +7,8 @@ import {
   BreadcrumbList,
   BreadcrumbSeparator,
 } from "../ui/breadcrumb";
+import { ThemeToggle } from "../ThemeToggle";
+import { Button } from "../ui/button";
 
 type Props = {
   address?: string;
@@ -22,8 +24,8 @@ export const Navigation = ({
   onClickRefresh,
 }: Props) => {
   return (
-    <div className="flex flex-row justify-between items-center">
-      <Breadcrumb className="px-2">
+    <div className="flex flex-row justify-between items-center px-2">
+      <Breadcrumb>
         <BreadcrumbList>
           <BreadcrumbItem>
             <BreadcrumbLink href="/">Pool</BreadcrumbLink>
@@ -50,14 +52,21 @@ export const Navigation = ({
           )}
         </BreadcrumbList>
       </Breadcrumb>
-      <div className="flex flex-row justify-end items-center gap-4">
-        <a href="https://github.com/bosonking/rpool-ui" target="_blank">
-          <GitHubLogo className="h-6 w-6 fill-muted-foreground hover:fill-zinc-300 cursor-pointer" />
-        </a>
-        <RefreshCcw
-          className="h-6 w-6 text-muted-foreground hover:text-zinc-300 cursor-pointer"
-          onClick={onClickRefresh}
-        />
+      <div className="flex flex-row justify-end items-center gap-2">
+        <ThemeToggle />
+        <Button asChild variant="outline" size="icon">
+          <a href="https://github.com/bosonking/rpool-ui" target="_blank">
+            <GitHubLogo className="h-[1.2rem] w-[1.2rem] fill-foreground cursor-pointer" />
+          </a>
+        </Button>
+        <Button asChild variant="outline" size="icon">
+          <div>
+            <RefreshCcw
+              className="h-[1.2rem] w-[1.2rem] cursor-pointer"
+              onClick={onClickRefresh}
+            />
+          </div>
+        </Button>
       </div>
     </div>
   );

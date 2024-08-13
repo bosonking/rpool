@@ -7,8 +7,14 @@ import { Navigation } from "@/components/common/Navigation";
 import { useAddressPage } from "@/hooks/useAddressPage";
 
 export function AddressPage() {
-  const { address, hashRateChartData, workerData, networkData, refetch } =
-    useAddressPage();
+  const {
+    address,
+    hashRateChartData,
+    workerData,
+    networkData,
+    refetch,
+    loading,
+  } = useAddressPage();
   return (
     <>
       <Navigation address={address} onClickRefresh={refetch} />
@@ -17,25 +23,33 @@ export function AddressPage() {
           <DifficultyCard
             difficulty={workerData?.bestDifficulty ?? 0}
             title="Your best difficulty"
+            loading={loading}
           />
           <DifficultyCard
             difficulty={networkData?.difficulty ?? 0}
             title="Network difficulty"
+            loading={loading}
           />
           <HashRateCard
             hashRate={networkData?.networkhashps ?? 0}
             title="Network hash rate"
+            loading={loading}
           />
           <BlockCard
             height={networkData?.blocks ?? 0}
             wheight={networkData?.currentblockweight ?? 0}
             title="Block height"
+            loading={loading}
           />
         </div>
         <div className="grow grid md:grid-cols-3 gap-4">
-          <WorkersCard address={address} workers={workerData?.workers ?? []} />
+          <WorkersCard
+            address={address}
+            workers={workerData?.workers ?? []}
+            loading={loading}
+          />
           <div className="md:col-span-2">
-            <ChartCard data={hashRateChartData} />
+            <ChartCard data={hashRateChartData} loading={loading} />
           </div>
         </div>
       </div>
