@@ -3,7 +3,7 @@ import { DifficultyCard } from "@/components/common/DifficultyCard";
 import { Navigation } from "@/components/common/Navigation";
 import { IdCard } from "@/components/worker-page/IdCard";
 import { UptimeCard } from "@/components/worker-page/UptimeCard";
-import { useWorkerPage } from "@/hooks/useWorkerPage";
+import { useWorkerPage } from "./useWorkerPage";
 
 export function WorkerPage() {
   const { address, worker, sessionId, workerData, refetch, loading } =
@@ -15,6 +15,7 @@ export function WorkerPage() {
         worker={worker}
         sessionId={sessionId}
         onClickRefresh={refetch}
+        loading={loading}
       />
       <div className="flex flex-col w-full h-full gap-4">
         <div className="grid gap-2 md:gap-4 md:grid-cols-3">

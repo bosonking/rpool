@@ -9,12 +9,14 @@ import {
 } from "../ui/breadcrumb";
 import { ThemeToggle } from "../ThemeToggle";
 import { Button } from "../ui/button";
+import { cn } from "@/lib/utils";
 
 type Props = {
   address?: string;
   worker?: string;
   sessionId?: string;
   onClickRefresh: () => void;
+  loading?: boolean;
 };
 
 export const Navigation = ({
@@ -22,6 +24,7 @@ export const Navigation = ({
   worker,
   sessionId,
   onClickRefresh,
+  loading,
 }: Props) => {
   return (
     <div className="flex flex-row justify-between items-center px-2">
@@ -56,13 +59,15 @@ export const Navigation = ({
         <ThemeToggle />
         <Button asChild variant="outline" size="icon">
           <a href="https://github.com/bosonking/rpool-ui" target="_blank">
-            <GitHubLogo className="h-[1.2rem] w-[1.2rem] fill-foreground cursor-pointer" />
+            <GitHubLogo className="h-button-icon w-button-icon fill-foreground cursor-pointer" />
           </a>
         </Button>
         <Button asChild variant="outline" size="icon">
           <div>
             <RefreshCcw
-              className="h-[1.2rem] w-[1.2rem] cursor-pointer"
+              className={cn("h-button-icon w-button-icon cursor-pointer", {
+                "animate-spin-ccw": loading,
+              })}
               onClick={onClickRefresh}
             />
           </div>

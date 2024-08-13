@@ -6,13 +6,13 @@ import { FoundBlocksCard } from "@/components/dashboard-page/FoundBlocksCard";
 import { HighScoresCard } from "@/components/dashboard-page/HighScoresCard";
 import { OnlineDevicesCard } from "@/components/dashboard-page/OnlineDevicesCard";
 import { SearchCard } from "@/components/dashboard-page/SearchCard";
-import { useDashboardPage } from "@/hooks/useDashboardPage";
+import { useDashboardPage } from "./useDashboardPage";
 
 export function DashboardPage() {
   const { infoData, hashRateChartData, refetch, loading } = useDashboardPage();
   return (
     <>
-      <Navigation onClickRefresh={refetch} />
+      <Navigation onClickRefresh={refetch} loading={loading} />
       <div className="grid gap-2 md:gap-4 lg:grid-cols-3">
         <ConnectCard />
         <SearchCard />

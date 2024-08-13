@@ -20,12 +20,27 @@ export default {
     },
     extend: {
       minHeight: {
+        "button-icon": "1.2rem",
         120: "30rem",
       },
       height: {
+        "button-icon": "1.2rem",
         120: "30rem",
       },
       maxHeight: {
+        "button-icon": "1.2rem",
+        120: "30rem",
+      },
+      minWidth: {
+        "button-icon": "1.2rem",
+        120: "30rem",
+      },
+      width: {
+        "button-icon": "1.2rem",
+        120: "30rem",
+      },
+      maxWidth: {
+        "button-icon": "1.2rem",
         120: "30rem",
       },
       colors: {
@@ -69,6 +84,10 @@ export default {
         sm: "calc(var(--radius) - 4px)",
       },
       keyframes: {
+        "spin-ccw": {
+          "0%": { transform: "rotate(0deg)" },
+          "100%": { transform: "rotate(-360deg)" },
+        },
         "accordion-down": {
           from: { height: "0" },
           to: { height: "var(--radix-accordion-content-height)" },
@@ -79,6 +98,7 @@ export default {
         },
       },
       animation: {
+        "spin-ccw": "spin-ccw 1s linear infinite",
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
       },
