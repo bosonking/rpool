@@ -10,6 +10,7 @@ import {
 import { UserAgent } from "@/domain/dashboard";
 import { formatDifficulty, formatHashRate } from "@/lib/formatters";
 import { DataCard } from "../common/DataCard";
+import { FosshDevice } from "../common/FosshDevice";
 
 type Props = {
   onlineDevices?: UserAgent[];
@@ -43,7 +44,9 @@ export const OnlineDevicesCard: React.FC<Props> = ({
             <TableBody>
               {onlineDevices.map((onlineDevice, i) => (
                 <TableRow key={onlineDevice.userAgent + i}>
-                  <TableCell>{onlineDevice.userAgent}</TableCell>
+                  <TableCell>
+                    <FosshDevice userAgent={onlineDevice.userAgent} />
+                  </TableCell>
                   <TableCell>{onlineDevice.count}</TableCell>
                   <TableCell className="text-right">
                     {formatHashRate(onlineDevice.totalHashRate)}

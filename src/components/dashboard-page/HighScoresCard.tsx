@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/table";
 import { HighScore } from "@/domain/dashboard";
 import { formatDifficulty, formatRelativeTime } from "@/lib/formatters";
+import { FosshDevice } from "../common/FosshDevice";
 
 type Props = {
   highScores?: HighScore[];
@@ -34,7 +35,9 @@ export const HighScoresCard = ({ highScores = [], loading }: Props) => {
               <TableCell>
                 {formatDifficulty(highScore.bestDifficulty)}
               </TableCell>
-              <TableCell>{highScore.bestDifficultyUserAgent}</TableCell>
+              <TableCell>
+                <FosshDevice userAgent={highScore.bestDifficultyUserAgent} />
+              </TableCell>
               <TableCell>{formatRelativeTime(highScore.updatedAt)}</TableCell>
             </TableRow>
           ))}
