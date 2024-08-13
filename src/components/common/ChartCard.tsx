@@ -123,7 +123,7 @@ export const ChartCard = ({
             strokeWidth={2}
             dot={{
               stroke: "hsl(var(--chart-5))",
-              fill: "var(--chart-background)",
+              fill: "hsl(var(--card))",
               r: 4,
             }}
           />
