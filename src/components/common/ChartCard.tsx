@@ -70,6 +70,7 @@ export const ChartCard = ({
           <XAxis
             dataKey="dateTime"
             tickMargin={8}
+            domain={[0, "dataMax"]}
             tickFormatter={(value) =>
               Intl.DateTimeFormat("en", {
                 hour: "numeric",
@@ -107,10 +108,14 @@ export const ChartCard = ({
 
           <Line
             dataKey="hashRate"
-            type="natural"
+            type="linear"
             stroke="hsl(var(--chart-3))"
             strokeWidth={2}
-            dot={false}
+            dot={{
+              stroke: "hsl(var(--chart-3))",
+              fill: "hsl(var(--card))",
+              r: 1,
+            }}
           />
           <Line
             connectNulls
