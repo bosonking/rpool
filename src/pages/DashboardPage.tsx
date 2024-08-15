@@ -22,19 +22,19 @@ export function DashboardPage() {
         <>
           <ChartCard data={hashRateChartData} loading={loading} />
           <div className="grid gap-2 md:gap-4 lg:grid-cols-3">
-            <div className="min-h-120 max-h-120">
+            <div className="">
               <HighScoresCard
                 highScores={infoData?.highScores}
                 loading={loading}
               />
             </div>
-            <div className="min-h-120 max-h-120">
+            <div className="">
               <FoundBlocksCard
                 foundBlocks={infoData?.blockData}
                 loading={loading}
               />
             </div>
-            <div className="min-h-120 max-h-120">
+            <div className="">
               <OnlineDevicesCard
                 onlineDevices={infoData?.userAgents}
                 loading={loading}
@@ -43,7 +43,7 @@ export function DashboardPage() {
           </div>
         </>
       ) : (
-        <div className="h-full grid gap-2 md:gap-4 lg:grid-cols-4">
+        <div className="grid gap-2 md:gap-4 lg:grid-cols-4 h-full">
           <div className="lg:col-start-1">
             <HighScoresCard
               highScores={infoData?.highScores}

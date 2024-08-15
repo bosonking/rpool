@@ -62,12 +62,8 @@ export const ChartCard = ({
       icon="ChartLine"
       title="Hash Rate in the last 24 hours"
       loading={loading}
-      highlight={true}
     >
-      <ChartContainer
-        config={chartConfig}
-        className="min-h-80 w-full aspect-square"
-      >
+      <ChartContainer config={chartConfig} className="min-h-40 w-full">
         <LineChart accessibilityLayer data={chartData}>
           <ChartLegend content={<ChartLegendContent />} />
           <CartesianGrid />
@@ -87,17 +83,18 @@ export const ChartCard = ({
             cursor={false}
             content={
               <ChartTooltipContent
-                hideLabel
-                indicator="line"
+                labelFormatter={(value) => new Date(value).toLocaleString()}
                 formatter={(value, name) => {
                   const config = chartConfig[name as keyof typeof chartConfig];
                   return (
-                    <div className="flex min-w-52 items-center text-xs text-muted-foreground gap-2">
-                      <div
-                        className={"h-2 w-2 shrink-0 rounded-[2px]"}
-                        style={{ backgroundColor: config.color }}
-                      ></div>
-                      {config?.label || name}
+                    <div className="flex justify-between w-60 items-center text-xs text-muted-foreground gap-2">
+                      <div className="flex items-center gap-1">
+                        <div
+                          className={"h-2 w-2 shrink-0 rounded-[2px]"}
+                          style={{ backgroundColor: config.color }}
+                        ></div>
+                        {config?.label || name}
+                      </div>
                       <div className="ml-auto flex items-baseline gap-0.5 font-mono font-medium tabular-nums text-foreground">
                         {formatHashRate(+value)}
                       </div>

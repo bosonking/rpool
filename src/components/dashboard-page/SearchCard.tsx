@@ -1,12 +1,12 @@
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/components/ui/use-toast";
 import { cn } from "@/lib/utils";
 import validate from "bitcoin-address-validation";
-import { Search } from "lucide-react";
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { DataCard } from "../common/DataCard";
 
 export const SearchCard = () => {
   const navigate = useNavigate();
@@ -29,12 +29,8 @@ export const SearchCard = () => {
   };
 
   return (
-    <Card>
-      <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-        <CardTitle className="text-2xl">Search your workers</CardTitle>
-        <Search className="h-8 w-8 text-muted-foreground" />
-      </CardHeader>
-      <CardContent className="flex flex-col justify-center h-36 mt-6">
+    <DataCard title="Search your workers" icon="Search">
+      <CardContent className="my-2">
         <form className="flex flex-row gap-4" onSubmit={handleSearch}>
           <Input
             placeholder="Type your bitcoin address"
@@ -45,6 +41,6 @@ export const SearchCard = () => {
           <Button>Search</Button>
         </form>
       </CardContent>
-    </Card>
+    </DataCard>
   );
 };

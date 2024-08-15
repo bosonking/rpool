@@ -22,7 +22,7 @@ export function AddressPage() {
         onClickRefresh={refetch}
         loading={loading}
       />
-      <div className="flex flex-col w-full h-full gap-4">
+      <div className="flex flex-col w-full h-full gap-2 md:gap-4">
         <div className="grid gap-2 md:gap-4 md:grid-cols-4">
           <DifficultyCard
             difficulty={workerData?.bestDifficulty ?? 0}
@@ -46,7 +46,7 @@ export function AddressPage() {
             loading={loading}
           />
         </div>
-        <div className="grow grid md:grid-cols-3 gap-4">
+        <div className="grow grid gap-2 md:gap-4 md:grid-cols-3">
           <WorkersCard
             address={address}
             workers={workerData?.workers ?? []}

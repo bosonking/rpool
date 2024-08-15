@@ -1,26 +1,22 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Pickaxe } from "lucide-react";
+import { CardContent } from "@/components/ui/card";
+import { DataCard } from "../common/DataCard";
 
 const STRATUM_HOST = import.meta.env.PUBLIC_STRATUM_HOST;
 const STRATUM_PORT = import.meta.env.PUBLIC_STRATUM_PORT;
 
 export const ConnectCard = () => {
   return (
-    <Card>
-      <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-        <CardTitle className="text-2xl">Connect to the pool</CardTitle>
-        <Pickaxe className="h-8 w-8 text-muted-foreground" />
-      </CardHeader>
-      <CardContent className="flex flex-col gap-2">
-        <div className="text-lg text-foreground">
+    <DataCard icon="Pickaxe" title="Connect to the pool">
+      <CardContent className="flex-col gap-2 text-foreground text-md md:text-lg">
+        <div>
           Host:{" "}
           <span className="text-muted-foreground">
             stratum-tcp://{STRATUM_HOST}:{STRATUM_PORT}
           </span>
         </div>
-        <div className="text-lg text-foreground">
+        <div>
           Username:{" "}
-          <span className="text-zinc-500">
+          <span className="md:text-sm text-muted-foreground font-mono">
             &lt;your bitcoin address&gt;.&lt;device name&gt;
           </span>
           <div className="text-xs text-zinc-500">
@@ -30,13 +26,13 @@ export const ConnectCard = () => {
             </span>
           </div>
         </div>
-        <div className="text-lg text-foreground">
+        <div>
           Password: <span className="text-zinc-500">x</span>
           <div className="text-xs text-zinc-500">
             The password is not relevant
           </div>
         </div>
       </CardContent>
-    </Card>
+    </DataCard>
   );
 };

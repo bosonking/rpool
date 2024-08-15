@@ -18,7 +18,7 @@ type Props = {
 
 export const HighScoresCard = ({ highScores = [], loading }: Props) => {
   return (
-    <DataCard title="High Scores" icon="TrendingUp" loading={loading} highlight>
+    <DataCard title="High Scores" icon="TrendingUp" loading={loading}>
       <Table>
         <TableHeader>
           <TableRow>

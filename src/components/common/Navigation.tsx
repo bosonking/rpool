@@ -27,7 +27,7 @@ export const Navigation = ({
   loading,
 }: Props) => {
   return (
-    <div className="flex flex-row justify-between items-center px-2">
+    <div className="w-full flex flex-row justify-between items-center px-2">
       <Breadcrumb>
         <BreadcrumbList>
           <BreadcrumbItem>
@@ -37,7 +37,21 @@ export const Navigation = ({
             <>
               <BreadcrumbSeparator />
               <BreadcrumbItem>
-                <BreadcrumbLink href={`/${address}`}>{address}</BreadcrumbLink>
+                <BreadcrumbLink
+                  href={`/${address}`}
+                  className="hidden md:block"
+                >
+                  {address}
+                </BreadcrumbLink>
+                <BreadcrumbLink
+                  className={cn("block md:hidden truncate w-40", {
+                    "w-12": worker || sessionId,
+                  })}
+                  href={`/${address}`}
+                  title={address}
+                >
+                  {address}
+                </BreadcrumbLink>
               </BreadcrumbItem>
             </>
           )}

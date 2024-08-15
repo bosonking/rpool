@@ -17,7 +17,7 @@ export function WorkerPage() {
         onClickRefresh={refetch}
         loading={loading}
       />
-      <div className="flex flex-col w-full h-full gap-4">
+      <div className="flex flex-col w-full h-full gap-2 md:gap-4">
         <div className="grid gap-2 md:gap-4 md:grid-cols-3">
           <IdCard name={worker ?? ""} sessionId={sessionId ?? ""} />
           <DifficultyCard
