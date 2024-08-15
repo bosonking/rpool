@@ -22,12 +22,7 @@ export const OnlineDevicesCard: React.FC<Props> = ({
   loading,
 }) => {
   return (
-    <DataCard
-      icon="Activity"
-      title="Online Devices"
-      loading={loading}
-      highlight
-    >
+    <DataCard icon="Activity" title="Online Devices" loading={loading}>
       <Table>
         <TableHeader>
           <TableRow>

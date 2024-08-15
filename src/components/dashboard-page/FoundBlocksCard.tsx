@@ -20,12 +20,7 @@ export const FoundBlocksCard: React.FC<Props> = ({
   loading,
 }) => {
   return (
-    <DataCard
-      icon="Bitcoin"
-      title="Found Blocks 🎉"
-      loading={loading}
-      highlight
-    >
+    <DataCard icon="Bitcoin" title="Found Blocks 🎉" loading={loading}>
       <Table>
         <TableHeader>
           <TableRow>
