@@ -6,23 +6,23 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart";
-import { HashRateChartData } from "@/domain/chart";
 import { formatHashRate } from "@/lib/formatters";
 import { movingAvg } from "@/lib/moving-avg";
 import { useEffect, useMemo, useState } from "react";
 import { CartesianGrid, Line, LineChart, XAxis, YAxis } from "recharts";
 import { DataCard } from "./DataCard";
+import { RawChartData } from "@/domain/types/chart";
 
-type ChartDataWithSMA = HashRateChartData & { sma?: number | null };
+type ChartDataWithSMA = RawChartData & { sma?: number | null };
 
 type Props = {
-  data: HashRateChartData[];
+  data: RawChartData[];
   loading?: boolean;
   movingAveragePeriod?: number;
 };
 
 const chartConfig: ChartConfig = {
-  hashRate: {
+  data: {
     label: "10 minutes Hash Rate",
     color: "hsl(var(--chart-3))",
   },
@@ -46,7 +46,7 @@ export const ChartCard = ({
     };
 
     const sma = movingAvg(
-      data.map((v) => v.hashRate),
+      data.map((v) => v.data),
       movingAveragePeriod
     );
     setChartData(
@@ -56,6 +56,8 @@ export const ChartCard = ({
       })
     );
   }, [data, movingAveragePeriod, hours]);
+
+  if (data.length === 0) return null;
 
   return (
     <DataCard
@@ -68,7 +70,7 @@ export const ChartCard = ({
           <ChartLegend content={<ChartLegendContent />} />
           <CartesianGrid />
           <XAxis
-            dataKey="dateTime"
+            dataKey="label"
             tickMargin={8}
             domain={[0, "dataMax"]}
             tickFormatter={(value) =>
@@ -92,7 +94,7 @@ export const ChartCard = ({
                       <div className="flex items-center gap-1">
                         <div
                           className={"h-2 w-2 shrink-0 rounded-[2px]"}
-                          style={{ backgroundColor: config.color }}
+                          style={{ backgroundColor: config?.color }}
                         ></div>
                         {config?.label || name}
                       </div>
@@ -107,7 +109,7 @@ export const ChartCard = ({
           />
 
           <Line
-            dataKey="hashRate"
+            dataKey="data"
             type="linear"
             stroke="hsl(var(--chart-3))"
             strokeWidth={2}

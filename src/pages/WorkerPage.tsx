@@ -3,11 +3,18 @@ import { DifficultyCard } from "@/components/common/DifficultyCard";
 import { Navigation } from "@/components/common/Navigation";
 import { IdCard } from "@/components/worker-page/IdCard";
 import { UptimeCard } from "@/components/worker-page/UptimeCard";
-import { useWorkerPage } from "./useWorkerPage";
+import { WorkerData } from "@/domain/types/worker";
+import { useParams } from "react-router-dom";
+import useSWR from "swr";
 
 export function WorkerPage() {
-  const { address, worker, sessionId, workerData, refetch, loading } =
-    useWorkerPage();
+  const { address, worker, sessionId } = useParams();
+  const {
+    data: workerData,
+    isLoading: loading,
+    mutate: refetch,
+  } = useSWR<WorkerData>(`/api/client/${address}/${worker}/${sessionId}`);
+
   return (
     <>
       <Navigation

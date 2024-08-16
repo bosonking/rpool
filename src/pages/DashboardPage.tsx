@@ -9,7 +9,7 @@ import { SearchCard } from "@/components/dashboard-page/SearchCard";
 import { useDashboardPage } from "./useDashboardPage";
 
 export function DashboardPage() {
-  const { infoData, hashRateChartData, refetch, loading } = useDashboardPage();
+  const { infoData, chartData, refetch, loading } = useDashboardPage();
   return (
     <>
       <Navigation onClickRefresh={refetch} loading={loading} />
@@ -20,7 +20,7 @@ export function DashboardPage() {
       </div>
       {infoData?.blockData && infoData?.blockData.length > 0 ? (
         <>
-          <ChartCard data={hashRateChartData} loading={loading} />
+          <ChartCard data={chartData} loading={loading} />
           <div className="grid gap-2 md:gap-4 lg:grid-cols-3">
             <div className="">
               <HighScoresCard
@@ -51,7 +51,7 @@ export function DashboardPage() {
             />
           </div>
           <div className="lg:col-start-2 lg:col-span-2">
-            <ChartCard data={hashRateChartData} loading={loading} />
+            <ChartCard data={chartData} loading={loading} />
           </div>
           <div className="lg:col-start-4">
             <OnlineDevicesCard

@@ -7,10 +7,11 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { UserAgent } from "@/domain/dashboard";
+import { UserAgent } from "@/domain/types/dashboard";
 import { formatDifficulty, formatHashRate } from "@/lib/formatters";
 import { DataCard } from "../common/DataCard";
 import { FosshDevice } from "../common/FosshDevice";
+import { CardContent } from "../ui/card";
 
 type Props = {
   onlineDevices?: UserAgent[];
@@ -23,19 +24,19 @@ export const OnlineDevicesCard: React.FC<Props> = ({
 }) => {
   return (
     <DataCard icon="Activity" title="Online Devices" loading={loading}>
-      <Table>
-        <TableHeader>
-          <TableRow>
-            <TableHead>Device</TableHead>
-            <TableHead>Count</TableHead>
-            <TableHead>Hash Rate</TableHead>
-            <TableHead>Best Diff.</TableHead>
-          </TableRow>
-        </TableHeader>
-        {onlineDevices.length === 0 ? (
-          <TableCaption>No data</TableCaption>
-        ) : (
-          <>
+      <CardContent>
+        <Table>
+          <TableHeader>
+            <TableRow className="hover:bg-transparent">
+              <TableHead>Device</TableHead>
+              <TableHead>Count</TableHead>
+              <TableHead>Hash Rate</TableHead>
+              <TableHead>Best Diff.</TableHead>
+            </TableRow>
+          </TableHeader>
+          {onlineDevices.length === 0 ? (
+            <TableCaption>No data</TableCaption>
+          ) : (
             <TableBody>
               {onlineDevices.map((onlineDevice, i) => (
                 <TableRow key={onlineDevice.userAgent + i}>
@@ -52,9 +53,9 @@ export const OnlineDevicesCard: React.FC<Props> = ({
                 </TableRow>
               ))}
             </TableBody>
-          </>
-        )}
-      </Table>
+          )}
+        </Table>
+      </CardContent>
     </DataCard>
   );
 };

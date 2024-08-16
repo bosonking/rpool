@@ -7,14 +7,8 @@ import { Navigation } from "@/components/common/Navigation";
 import { useAddressPage } from "./useAddressPage";
 
 export function AddressPage() {
-  const {
-    address,
-    hashRateChartData,
-    workerData,
-    networkData,
-    refetch,
-    loading,
-  } = useAddressPage();
+  const { address, chartData, workerData, networkData, refetch, loading } =
+    useAddressPage();
   return (
     <>
       <Navigation
@@ -53,7 +47,7 @@ export function AddressPage() {
             loading={loading}
           />
           <div className="md:col-span-2">
-            <ChartCard data={hashRateChartData} loading={loading} />
+            <ChartCard data={chartData} loading={loading} />
           </div>
         </div>
       </div>

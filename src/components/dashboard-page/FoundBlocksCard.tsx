@@ -7,7 +7,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { BlockData } from "@/domain/dashboard";
+import { BlockData } from "@/domain/types/dashboard";
 import { DataCard } from "../common/DataCard";
 
 type Props = {
@@ -23,7 +23,7 @@ export const FoundBlocksCard: React.FC<Props> = ({
     <DataCard icon="Bitcoin" title="Found Blocks 🎉" loading={loading}>
       <Table>
         <TableHeader>
-          <TableRow>
+          <TableRow className="hover:bg-transparent">
             <TableHead>Height</TableHead>
             <TableHead>Address</TableHead>
             <TableHead>Worker</TableHead>
