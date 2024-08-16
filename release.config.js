@@ -1,7 +1,5 @@
 export default {
   branches: ['main'],
-  repositoryUrl: 'https://github.com/bosonking/rpool-ui.git',
-
   plugins: [
     '@semantic-release/commit-analyzer',
     '@semantic-release/release-notes-generator',
