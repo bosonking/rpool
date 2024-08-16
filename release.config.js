@@ -5,7 +5,7 @@ export default {
     '@semantic-release/release-notes-generator',
     '@semantic-release/changelog',
     ['@semantic-release/github', {
-      assets: [{ path: "dist.zip", label: "Distribution files" }]
+      assets: [{ path: "dist.zip", label: "dist.zip" }]
     }],
     [
       '@semantic-release/git',
