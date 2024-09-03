@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/bosonking/rpool-ui/compare/v1.0.1...v1.1.0) (2024-09-03)
+
+
+### Features
+
+* Add hash rate mean to charts and a mean widget in AddresPage ([0a1c21a](https://github.com/bosonking/rpool-ui/commit/0a1c21adad4e750594f6ac7cd5ef7c8fc61f8bd4))
+
 ## [1.0.1](https://github.com/bosonking/rpool-ui/compare/v1.0.0...v1.0.1) (2024-08-16)
 
 
