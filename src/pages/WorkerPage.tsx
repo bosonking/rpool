@@ -38,7 +38,11 @@ export function WorkerPage() {
           />
         </div>
 
-        <ChartCard data={workerData?.chartData ?? []} loading={loading} />
+        <ChartCard
+          data={workerData?.chartData ?? []}
+          loading={loading}
+          title="Session Hash Rate"
+        />
       </div>
     </>
   );

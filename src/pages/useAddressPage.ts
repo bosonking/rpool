@@ -36,10 +36,21 @@ export const useAddressPage = () => {
     mutateChart();
   };
 
+  const mean = useMemo(() => {
+    if (!chartData) {
+      return 0;
+    }
+
+    return (
+      chartData.reduce((acc, worker) => acc + worker.data, 0) / chartData.length
+    );
+  }, [chartData]);
+
   return {
     address,
     chartData,
     loading,
+    mean,
     networkData,
     workerData,
     refetch,

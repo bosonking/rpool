@@ -6,19 +6,26 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart";
+import { RawChartData } from "@/domain/types/chart";
 import { formatHashRate } from "@/lib/formatters";
 import { movingAvg } from "@/lib/moving-avg";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { CartesianGrid, Line, LineChart, XAxis, YAxis } from "recharts";
 import { DataCard } from "./DataCard";
-import { RawChartData } from "@/domain/types/chart";
 
-type ChartDataWithSMA = RawChartData & { sma?: number | null };
+type ChartDataWithSMA = RawChartData & {
+  sma?: number | null;
+  mean?: number | null;
+};
+
+const TICKS_PER_HOUR = 6 as const;
+const MOVING_AVERAGE_PERIOD = 12 as const;
 
 type Props = {
+  title: string;
   data: RawChartData[];
   loading?: boolean;
-  movingAveragePeriod?: number;
+  mean?: number;
 };
 
 const chartConfig: ChartConfig = {
@@ -26,45 +33,45 @@ const chartConfig: ChartConfig = {
     label: "10 minutes Hash Rate",
     color: "hsl(var(--chart-3))",
   },
+  sma: {
+    label: `${(
+      MOVING_AVERAGE_PERIOD / TICKS_PER_HOUR
+    ).toLocaleString()} hours Hash Rate`,
+    color: "hsl(var(--chart-5))",
+  },
+  mean: {
+    label: "Mean Hash Rate",
+    color: "hsl(var(--chart-4))",
+  },
 };
 
-export const ChartCard = ({
-  data,
-  loading,
-  movingAveragePeriod = 12,
-}: Props) => {
+export const ChartCard = ({ data, loading, title, mean }: Props) => {
   const [chartData, setChartData] = useState<ChartDataWithSMA[]>(
     data.map((v) => ({ ...v, sma: null }))
   );
 
-  const hours = useMemo(() => movingAveragePeriod / 6, [movingAveragePeriod]);
-
   useEffect(() => {
-    chartConfig.sma = {
-      label: `${hours.toLocaleString()} hours Hash Rate`,
-      color: "hsl(var(--chart-5))",
-    };
-
     const sma = movingAvg(
       data.map((v) => v.data),
-      movingAveragePeriod
+      MOVING_AVERAGE_PERIOD
     );
+    const effectiveMean =
+      mean ?? data.reduce((acc, v) => acc + v.data, 0) / data.length;
+
     setChartData(
-      data.map((v, i) => {
+      data.map((v, i, a) => {
+        if (i === 0 || a.length - 1 === i)
+          return { ...v, sma: null, mean: effectiveMean };
         if (i % 6 !== 0) return { ...v, sma: null };
         return { ...v, sma: sma[i] };
       })
     );
-  }, [data, movingAveragePeriod, hours]);
+  }, [data, mean]);
 
   if (data.length === 0) return null;
 
   return (
-    <DataCard
-      icon="ChartLine"
-      title="Hash Rate in the last 24 hours"
-      loading={loading}
-    >
+    <DataCard icon="ChartLine" title={title} loading={loading}>
       <ChartContainer config={chartConfig} className="min-h-40 w-full">
         <LineChart accessibilityLayer data={chartData}>
           <ChartLegend content={<ChartLegendContent />} />
@@ -111,10 +118,10 @@ export const ChartCard = ({
           <Line
             dataKey="data"
             type="linear"
-            stroke="hsl(var(--chart-3))"
+            stroke={chartConfig.data.color}
             strokeWidth={2}
             dot={{
-              stroke: "hsl(var(--chart-3))",
+              stroke: chartConfig.data.color,
               fill: "hsl(var(--card))",
               r: 1,
             }}
@@ -123,10 +130,23 @@ export const ChartCard = ({
             connectNulls
             dataKey="sma"
             type="natural"
-            stroke="hsl(var(--chart-5))"
+            stroke={chartConfig.sma.color}
             strokeWidth={2}
             dot={{
-              stroke: "hsl(var(--chart-5))",
+              stroke: chartConfig.sma.color,
+              fill: "hsl(var(--card))",
+              r: 4,
+            }}
+          />
+
+          <Line
+            connectNulls
+            dataKey="mean"
+            type="natural"
+            stroke={chartConfig.mean.color}
+            strokeWidth={2}
+            dot={{
+              stroke: chartConfig.mean.color,
               fill: "hsl(var(--card))",
               r: 4,
             }}

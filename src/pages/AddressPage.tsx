@@ -7,8 +7,15 @@ import { Navigation } from "@/components/common/Navigation";
 import { useAddressPage } from "./useAddressPage";
 
 export function AddressPage() {
-  const { address, chartData, workerData, networkData, refetch, loading } =
-    useAddressPage();
+  const {
+    address,
+    chartData,
+    workerData,
+    mean,
+    networkData,
+    refetch,
+    loading,
+  } = useAddressPage();
   return (
     <>
       <Navigation
@@ -17,10 +24,15 @@ export function AddressPage() {
         loading={loading}
       />
       <div className="flex flex-col w-full h-full gap-2 md:gap-4">
-        <div className="grid gap-2 md:gap-4 md:grid-cols-4">
+        <div className="grid gap-2 md:gap-4 md:grid-cols-5">
           <DifficultyCard
             difficulty={workerData?.bestDifficulty ?? 0}
             title="Your best difficulty"
+            loading={loading}
+          />
+          <HashRateCard
+            hashRate={mean}
+            title="Your mean hash rate"
             loading={loading}
           />
           <DifficultyCard
@@ -47,7 +59,12 @@ export function AddressPage() {
             loading={loading}
           />
           <div className="md:col-span-2">
-            <ChartCard data={chartData} loading={loading} />
+            <ChartCard
+              data={chartData}
+              loading={loading}
+              title="Hash Rate in the last 24 hours"
+              mean={mean}
+            />
           </div>
         </div>
       </div>

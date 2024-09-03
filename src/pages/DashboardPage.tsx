@@ -20,7 +20,11 @@ export function DashboardPage() {
       </div>
       {infoData?.blockData && infoData?.blockData.length > 0 ? (
         <>
-          <ChartCard data={chartData} loading={loading} />
+          <ChartCard
+            data={chartData}
+            loading={loading}
+            title="Hash Rate in the last 24 hours"
+          />
           <div className="grid gap-2 md:gap-4 lg:grid-cols-3">
             <div className="">
               <HighScoresCard
@@ -51,7 +55,11 @@ export function DashboardPage() {
             />
           </div>
           <div className="lg:col-start-2 lg:col-span-2">
-            <ChartCard data={chartData} loading={loading} />
+            <ChartCard
+              data={chartData}
+              loading={loading}
+              title="Hash Rate in the last 24 hours"
+            />
           </div>
           <div className="lg:col-start-4">
             <OnlineDevicesCard
