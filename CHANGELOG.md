@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/bosonking/rpool-ui/compare/v1.1.0...v1.1.1) (2024-09-09)
+
+
+### Bug Fixes
+
+* Add mean to Session page ([10caacc](https://github.com/bosonking/rpool-ui/commit/10caacc6ab02abe85125144648f33d571530a0c2))
+
 # [1.1.0](https://github.com/bosonking/rpool-ui/compare/v1.0.1...v1.1.0) (2024-09-03)
 
 
