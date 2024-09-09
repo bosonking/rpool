@@ -7,9 +7,9 @@ import { ThemeProvider } from "./contexts/theme/theme-provider.tsx";
 import { REFRESH_INTERVAL } from "./domain/constants.ts";
 import "./index.css";
 import { MainLayout } from "./layout/MainLayout.tsx";
-import { AddressPage } from "./pages/AddressPage.tsx";
-import { DashboardPage } from "./pages/DashboardPage.tsx";
-import { WorkerPage } from "./pages/WorkerPage.tsx";
+import { AddressPage } from "./pages/AddressPage";
+import { DashboardPage } from "./pages/DashboardPage";
+import { SessionPage } from "./pages/SessionPage";
 import { fetcher } from "./domain/fetcher.ts";
 
 const router = createBrowserRouter([
@@ -31,7 +31,7 @@ const router = createBrowserRouter([
           },
           {
             path: ":worker/:sessionId",
-            element: <WorkerPage />,
+            element: <SessionPage />,
           },
         ],
       },

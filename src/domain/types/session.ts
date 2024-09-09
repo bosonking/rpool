@@ -1,6 +1,6 @@
 import { RawChartData } from "./chart";
 
-export type WorkerData = {
+export type SessionData = {
   bestDifficulty: number;
   chartData: RawChartData[];
   name: string;

@@ -1,6 +1,7 @@
 import { AddressData } from "@/domain/types/address";
 import { RawChartData } from "@/domain/types/chart";
 import { NetworkData } from "@/domain/types/network";
+import { useChartMean } from "@/hooks/useChartMean";
 import { useMemo } from "react";
 import { useParams } from "react-router-dom";
 import useSWR from "swr";
@@ -25,6 +26,8 @@ export const useAddressPage = () => {
     mutate: mutateChart,
   } = useSWR<RawChartData[]>(`/api/client/${address}/chart`);
 
+  const { mean } = useChartMean(chartData);
+
   const loading = useMemo(
     () => loadingWorker || loadingNetwork || loadingChart,
     [loadingChart, loadingNetwork, loadingWorker]
@@ -35,16 +38,6 @@ export const useAddressPage = () => {
     mutateNetwork();
     mutateChart();
   };
-
-  const mean = useMemo(() => {
-    if (!chartData) {
-      return 0;
-    }
-
-    return (
-      chartData.reduce((acc, worker) => acc + worker.data, 0) / chartData.length
-    );
-  }, [chartData]);
 
   return {
     address,
